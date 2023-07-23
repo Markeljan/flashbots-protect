@@ -1,13 +1,13 @@
 'use client'
 
 import React, { useEffect, useState } from "react"
-import SimpleDropdown from "@/components/simple-dropdown"
+import SimpleDropdown from "@/components/flashbots-protect/simple-dropdown"
 import FlashbotsProtectButton from 'protect-button'
-import Checkbox from '@/components/checkbox'
+import Checkbox from '@/components/flashbots-protect/checkbox'
 import { Builder, useSupportedBuilders } from '@/lib/use-supported-builder'
 import GridBlock from "./grid-block"
 import AlignItems from "./align-items"
-import { buttonVariants } from "./ui/button"
+import { buttonVariants } from "../ui/button"
 
 const ProtectButtonSelector = () => {
     const supportedBuilders = useSupportedBuilders()
@@ -94,7 +94,7 @@ const ProtectButtonSelector = () => {
             }
         }
         init()
-    }, [curatedBuilders])
+    }, [curatedBuilders, supportedBuilders])
 
     return (<GridBlock>
         <SimpleDropdown header={"Advanced options"} onClickHeader={() => {
