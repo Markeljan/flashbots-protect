@@ -6,7 +6,7 @@ export const siteConfig = {
     "Protect your transactions from MEV extraction and frontrunning using Flashbots RPC.",
   mainNav: [
     {
-      title: "Get Protected",
+      title: "Protect me!",
       href: "/",
     },
   ],

@@ -13,12 +13,12 @@ const Checkbox = (
         }
 ) => {
     const elements = [
-        <label htmlFor={id} key={0}>{label}</label>,
-        <input id={id} type="checkbox" checked={checked} disabled={disabled} key={1} onChange={(e) => {
+        <label className="cursor-pointer" htmlFor={id} key={0}>{label}</label>,
+        <input className="cursor-pointer" id={id} type="checkbox" checked={checked} disabled={disabled} key={1} onChange={(e) => {
             onChange(e.target.checked)
         }} />
     ]
-    return <div className='px-4 pr-16px'>
+    return <div className='flex px-4 pr-16px gap-2'>
         {orientation === "last" ? elements : elements.reverse()}
     </div>
 }

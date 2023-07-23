@@ -1,12 +1,9 @@
 'use client'
 
 import React, { useEffect, useState } from "react"
-import SimpleDropdown from "@/components/flashbots-protect/simple-dropdown"
 import FlashbotsProtectButton from 'protect-button'
 import Checkbox from '@/components/flashbots-protect/checkbox'
 import { Builder, useSupportedBuilders } from '@/lib/use-supported-builder'
-import GridBlock from "./grid-block"
-import AlignItems from "./align-items"
 import { buttonVariants } from "@/components/ui/button"
 import * as Tabs from '@radix-ui/react-tabs';
 
@@ -83,6 +80,8 @@ const ProtectButtonSelector = () => {
         if (val === true) {
             const allCuratedBuilderNames = curatedBuilders?.map(builder => builder.name.toLowerCase());
             setSelectedBuilders(allCuratedBuilderNames || []);
+        } else {
+            setSelectedBuilders([]);
         }
     }
 
@@ -98,44 +97,46 @@ const ProtectButtonSelector = () => {
     }, [curatedBuilders, supportedBuilders])
 
     return (
-        <div className="flex flex-col gap-4 my-8">
-            <div className={buttonVariants({ size: "default", variant: "default" })}>
-                <FlashbotsProtectButton
-                    hints={advancedOptionsShown ? hints : {}}
-                    builders={advancedOptionsShown ? selectedBuilders : undefined}>
-                    Connect Wallet to Protect
-                </FlashbotsProtectButton>
+        <div className="flex flex-col gap-4 justify-center items-center">
+            <div className="flex flex-col gap-4">
+                <div className={buttonVariants({ size: "lg", variant: "default" })}>
+                    <FlashbotsProtectButton
+                        hints={advancedOptionsShown ? hints : {}}
+                        builders={advancedOptionsShown ? selectedBuilders : undefined}>
+                        Add Flashbots RPC
+                    </FlashbotsProtectButton>
+                </div>
+                <button
+                    className={buttonVariants({ size: "lg", variant: "info" })}
+                    onClick={() => setAdvancedOptionsShown(!advancedOptionsShown)}
+                >
+                    Advanced Options
+                </button>
             </div>
-            <button
-                className={buttonVariants({ size: "default", variant: "secondary" })}
-                onClick={() => setAdvancedOptionsShown(!advancedOptionsShown)}
-            >
-                Advanced Options
-            </button>
-            <div className={advancedOptionsShown ? "flex flex-col md:flex-row gap-4 my-8" : "hidden"}>
+            <div className={advancedOptionsShown ? "flex flex-col md:flex-row gap-4 my-8 mt-6" : "hidden"}>
                 <Tabs.Root
-                    className="flex flex-col w-[300px] shadow-[0_2px_10px] shadow-blackA4"
+                    className="flex flex-col w-[300px] shadow-[0_2px_10px] min-h-[270px] rounded-md overflow-hidden dark:bg-mauve-5 dark:text-cyan-12 "
                     defaultValue="tab1"
                 >
-                    <Tabs.List className="shrink-0 flex border-b border-mauve-6" aria-label="tabs example">
+                    <Tabs.List className="shrink-0 flex border-b border-cyan-12" aria-label="config">
                         <Tabs.Trigger
-                            className="bg-white px-5 h-[45px] flex-1 flex items-center justify-center text-[15px] leading-none text-mauve-11 select-none first:rounded-tl-md last:rounded-tr-md hover:text-violet-11 data-[state=active]:text-violet-11 data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0] data-[state=active]:shadow-current data-[state=active]:focus:relative data-[state=active]:focus:shadow-[0_0_0_2px] data-[state=active]:focus:shadow-black outline-none cursor-default"
+                            className="bg-mauve-2 px-5 h-[45px] flex-1 flex items-center justify-center text-[15px] leading-none text-mauve-11 select-none first:rounded-tl-md last:rounded-tr-md hover:text-mauve-12 data-[state=active]:text-mauve-12 data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0] data-[state=active]:shadow-current data-[state=active]:focus:relative data-[state=active] outline-none cursor-pointer dark:text-cyan-12 dark:bg-mauve-5"
                             value="tab1"
                         >
                             MEV-Share Hints
                         </Tabs.Trigger>
                         <Tabs.Trigger
-                            className="bg-white px-5 h-[45px] flex-1 flex items-center justify-center text-[15px] leading-none text-mauve-11 select-none first:rounded-tl-md last:rounded-tr-md hover:text-violet-11 data-[state=active]:text-violet-11 data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0] data-[state=active]:shadow-current data-[state=active]:focus:relative data-[state=active]:focus:shadow-[0_0_0_2px] data-[state=active]:focus:shadow-black outline-none cursor-default"
+                            className="bg-mauve-2 px-5 h-[45px] flex-1 flex items-center justify-center text-[15px] leading-none text-mauve-11 select-none first:rounded-tl-md last:rounded-tr-md hover:text-mauve-12 data-[state=active]:text-mauve-12 data-[state=active]:shadow-[inset_0_-1px_0_0,0_1px_0_0] data-[state=active]:shadow-current data-[state=active]:focus:relative data-[state=active]outline-none cursor-pointer dark:text-cyan-12 dark:bg-mauve-5"
                             value="tab2"
                         >
                             Builders
                         </Tabs.Trigger>
                     </Tabs.List>
                     <Tabs.Content
-                        className="grow p-5 bg-white rounded-b-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
+                        className="grow p-5 bg-mauve-2 rounded-b-md outline-none dark:bg-mauve-5 dark:text-cyan-12 text-mauve-11 text-[15px] leading-normal"
                         value="tab1"
                     >
-                        <div className="text-mauve-11 text-[15px] leading-normal">
+                        <div>
                             <Checkbox label='Calldata' id='calldata' checked={calldata} onChange={onSetCalldata} />
                             <Checkbox label='Contract Address' id='contractAddress' checked={contractAddress} onChange={onSetContractAddress} />
                             <Checkbox label='Function Selector' id='functionSelector' checked={functionSelector} onChange={onSetFunctionSelector} />
@@ -144,10 +145,10 @@ const ProtectButtonSelector = () => {
                         </div>
                     </Tabs.Content>
                     <Tabs.Content
-                        className="grow p-5 bg-white rounded-b-md outline-none focus:shadow-[0_0_0_2px] focus:shadow-black"
+                        className="grow p-5 bg-mauve-2 rounded-b-md outline-none text-mauve-11 text-[15px] leading-normal dark:bg-mauve-5 dark:text-cyan-12"
                         value="tab2"
                     >
-                        <div className="text-mauve-11 text-[15px] leading-normal">
+                        <div>
                             {curatedBuilders && curatedBuilders.map((builder, idx) => <BuilderCheckbox name={builder.name} key={idx} />)}
                             {curatedBuilders && <Checkbox label={"all"} checked={allBuilders === true} onChange={toggleAllBuilders} id={"all"} />}
                         </div>
