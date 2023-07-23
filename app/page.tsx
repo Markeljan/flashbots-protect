@@ -59,6 +59,7 @@ export default function IndexPage() {
           <h3 className="text-sm md:text-xl font-bold opacity-100">Distribute</h3>
           <p>Sustainable distribution of MEV revenue.</p>
         </div>
+        
       </div>
     </section >
   )
