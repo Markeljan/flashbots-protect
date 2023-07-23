@@ -21,7 +21,6 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
   },
 }
 
@@ -36,7 +35,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body
           className={cn(
-            "min-h-screen font-sans antialiased bg-mauve-2 text-cyan-12",
+            "min-h-screen font-sans antialiased bg-mauve-2 text-cyan-12 bg-purple-4 dark:bg-cyan-6",
             fontSans.variable
           )}
         >

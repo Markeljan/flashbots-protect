@@ -3,9 +3,9 @@ import ProtectButtonSelector from "@/components/flashbots-protect/protect-button
 
 export default function IndexPage() {
   return (
-    <section className="flex flex-col items-center justify-center gap-6 pb-8 pt-6 md:py-10 bg-mauve-2">
-      <div className="flex max-w-[980px] flex-col text-center items-center prose prose-mauve border border-black">
-        <h1 className="md:text-5xl font-bold px-2">
+    <section className="flex flex-col items-center justify-center gap-6 pb-8 pt-6 md:py-10">
+      <div className="flex max-w-[980px] flex-col text-center items-center prose prose-mauve">
+        <h1 className="md:text-5xl font-bold px-">
           Elevate Your Transaction Security
         </h1>
         <p className="max-w-[700px] text-xl text-cyan-12">
@@ -23,13 +23,14 @@ export default function IndexPage() {
           <p>Earn rewards from searchers for making transactions.</p>
         </div>
       </div>
-      <div className="flex flex-row md:flex-row gap-4 mt-4 bg-cyan-5 ">
+
+      <div className="flex flex-row  md:flex-row justify-center items-center bg-cyan-5 w-full">
         <ProtectButtonSelector />
       </div>
-      <div className="background">
 
+      <div className="background">
       </div>
-      <Image className="border border-black" src="/calm-guy.png" width={1480} height={1480} alt="Calm guy" />
+      <Image src="/sitter-mask.png" width={1480} height={1480} alt="Calm guy" />
 
       <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-6">
 
