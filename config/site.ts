@@ -1,18 +1,16 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next.js",
+  name: "Flashbots Protect",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "Protect your transactions from MEV extraction and frontrunning using Flashbots RPC.",
   mainNav: [
     {
-      title: "Home",
+      title: "Get Protected",
       href: "/",
     },
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
-  },
+    docs: "https://docs.flashbots.net/flashbots-protect/rpc/quick-start",
+  }
 }
